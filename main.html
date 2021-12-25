@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script>
+    var effort = 0;
+    function onEffortClicked(){
+        effort += 1;
+        document.getElementById('clickEfforts').innerHTML = effort;
+        return effort;
+    }
+        
+//    var money = 0;
+//    fucntion job(effort){
+//        if (effort % 60 == 0){
+//             money += 1;
+//        }
+//        document.getElementById('moneys').innerHTML = money;
+//    }
+    </script>
+    
+    <button type="button" onClick="onEffortClicked()">Human Effort</button>
+    
+    <p>Physical Work Put in: <a id="clickEfforts">0</a></p>
+<!--    <p id="moneys"></p>-->
+</body>
+</html>
