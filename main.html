@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="interface.css" />
+	<link rel="stylesheet" type="text/css" href="main.css" />
 	<title>Rags to Riches</title>
 </head>
 <body>
     <script type="text/javascript" src="main.js"></script>
-    <!-- Main Buttons -->
-    <button type="button" onClick="onEffortClicked()">Human Effort</button>
-    <button type="button" onClick="onPay()">Collect Paycheck</button>
-    <p>Physical Work Put in: <a id="clickEfforts">0</a></p>
-    <p>Money Saved Up: <a id="moneys">0</a></p>
-    <p>Fanbase: <a id="fans">0</a></p>
-    
-    <p>Store</p>
-    <button id="theCamera" type="button" onClick="onCamera()">Buy Camera</button>
-    <button id="theDaw" type="button" onClick="onDAW()">Buy DAW</button>
-    
-    <p>Studio</p>
-    <button id="hide" style="display:none;" type="button" onClick="onProduce()">Make Beat</button>
-    <button id="hideVideo" style="display:none;" type="button" onClick="onVideo()">Make Music Video</button>
+    <div class="gameWindow">
+		<!-- Main Buttons -->
+		<div class="mainButtons">
+			<p>Physical Work Put in: <a id="effortTotal">0</a></p>
+			<p>Money Saved Up: <a id="moneyTotal">0</a></p>
+			<p>Fanbase: <a id="fans">0</a></p>
+			<button type="button" onClick="onEffortClicks()">Human Effort</button>
+			<button type="button" onClick="onCollectPay()">Collect Paycheck</button>
+		</div>
+		
+		<!-- Store -->
+		<div class="store">
+			<h1>Store</h1>
+			<button id="musicSoftware" type="button" onClick="onBuyDaw()">Buy Music Software $<a id="dawPrice">50</a></button>
+			<button id="camera" type="button" onClick="onBuyCamera()">Buy Camera $<a id="cameraPrice">100</a></p></button>
+		</div>
+		
+		
+		<!-- Studio -->
+		<div class="studio">
+			<h1>Studio</h1p>
+			<button id="beatMaking" style="display:none;" type="button" onClick="onProduce()">Make Beat</button>
+			<button id="videoMaking" style="display:none;" type="button" onClick="onVideo()">Make Music Video</button>
+		</div>
+	</div>
 </body>
 </html>
