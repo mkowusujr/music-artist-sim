@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<link rel="stylesheet" type="text/css" href="interface.css" />
+	<title>Rags to Riches</title>
+</head>
 <body>
-    <script>
-    var effort = 0;
-    function onEffortClicked(){
-        effort += 1;
-        document.getElementById('clickEfforts').innerHTML = effort;
-        return effort;
-    }
-        
-//    var money = 0;
-//    fucntion job(effort){
-//        if (effort % 60 == 0){
-//             money += 1;
-//        }
-//        document.getElementById('moneys').innerHTML = money;
-//    }
-    </script>
-    
+    <script type="text/javascript" src="main.js"></script>
+    <!-- Main Buttons -->
     <button type="button" onClick="onEffortClicked()">Human Effort</button>
-    
+    <button type="button" onClick="onPay()">Collect Paycheck</button>
     <p>Physical Work Put in: <a id="clickEfforts">0</a></p>
-<!--    <p id="moneys"></p>-->
+    <p>Money Saved Up: <a id="moneys">0</a></p>
+    <p>Fanbase: <a id="fans">0</a></p>
+    
+    <p>Store</p>
+    <button id="theCamera" type="button" onClick="onCamera()">Buy Camera</button>
+    <button id="theDaw" type="button" onClick="onDAW()">Buy DAW</button>
+    
+    <p>Studio</p>
+    <button id="hide" style="display:none;" type="button" onClick="onProduce()">Make Beat</button>
+    <button id="hideVideo" style="display:none;" type="button" onClick="onVideo()">Make Music Video</button>
 </body>
 </html>
