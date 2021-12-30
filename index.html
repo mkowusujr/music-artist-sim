@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="main.css" />
+	<link href='https://css.gg/credit-card.css' rel='stylesheet'>
+	<title>Rags to Riches</title>
+</head>
+<body>
+    <script type="text/javascript" src="main.js"></script>
+    <div class="gameWindow">
+		<div class="mainSection">
+			<!-- Main Buttons -->
+			
+				<p>Physical Work Put in: <a id="effortTotal">0</a></p>
+				<p>Money Saved Up: <a id="moneyTotal">0</a></p>
+				<p>Fanbase: <a id="fans">0</a></p>
+				<div class="mainButtons">
+				<button class="mainButton" class="leftBtn" onClick="onEffortClicks()">Human Effort</button>
+				<button class="mainButton" class="rightBtn" onClick="onCollectPay()"><i class="gg-credit-card"></i> Collect Paycheck</button>
+			</div>
+		</div>
+		
+		<div class="infoSection"></div>
+		
+		<div class="shoppingSection">
+			<!-- Store -->
+			<div class="store">
+				<h1>Store</h1>
+				<button id="musicSoftware" type="button" onClick="onBuyDaw()">Buy Music Software $<a id="dawPrice">50</a></button>
+				<button id="camera" type="button" onClick="onBuyCamera()">Buy Camera $<a id="cameraPrice">100</a></p></button>
+			</div>
+			
+			
+			<!-- Studio -->
+			<div class="studio">
+				<h1>Studio</h1>
+				<button id="beatMaking" style="display:none;" type="button" onClick="onProduce()">Make Beat</button>
+				<button id="videoMaking" style="display:none;" type="button" onClick="onVideo()">Make Music Video</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

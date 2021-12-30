@@ -4,38 +4,92 @@ body{
 	background-attachment:fixed;
 	background-size:100% 100%;
 }
-button {
+.mainButton {
   /*background-color: #4CAF50; /* Green */
   border: none;
+  width: 240px;
+    height: 60px;
   /*color: white;*/
   border-radius: 15px;
-  padding: 15px 32px;
+  /*padding: 15px 32px;*/
   text-align: center;
   display: inline-block;
   box-shadow: 0 9px #999;
-  font-size: 24px;
+  font-size: 30px;
   cursor: pointer;
+  display: inline;
+  white-space: nowrap;
+  display: inline-block;
 }
-button:active {
+.mainButton:active {
   /*background-color: #3e8e41;*/
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+.rightBtn{
+	position: absolute;
+	bottom: 30px;
+	right: 30px;
 }
 .gameWindow{
 	padding: 30px;
 }
 .mainButtons{
 	position: absolute;
-	bottom: 90px;
+	bottom: 30px;
 	left: 30px;
 }
-.store{
+.mainButtons:last-child{
 	position: absolute;
-	top: 0px;
+	bottom: 30px;
 	right: 30px;
 }
+.mainSection{
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	width: 30%;
+    height: 92%;
+    background: rgba(141, 73, 83, .5);
+    padding-left: 30px;
+    border-radius: 15px;
+}
+
+.infoSection{
+	position: absolute;
+	top: 30px;
+	left: 34.5%;
+	width: 29%;
+    height: 92%;
+    background: rgba(141, 73, 83, .5);
+    padding-left: 30px;
+    border-radius: 15px;
+}
+
+
+
+.store{
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	
+	width: 30%;
+    height: 45%;
+    background: rgba(141, 73, 83, .5);
+    padding-left: 30px;
+    border-radius: 15px;
+}
+/*.store buttons{
+	font-size: 12px !important;
+}*/
 .studio{
 	position: absolute;
 	top: 50%;
 	right: 30px;
+	
+	width: 30%;
+    height: 45%;
+    background: rgba(141, 73, 83, .5);
+    padding-left: 30px;
+    border-radius: 15px;
 }
