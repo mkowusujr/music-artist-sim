@@ -1,72 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Rags to Riches</title>
+	<title>Rags to Riches</title>
 	<link rel="stylesheet" type="text/css" href="main.css" />
 	<script type="text/javascript" src="main.js"></script>
 </head>
 <body class="main-grid">
-  <div class="grid-section">
-  <h1 type"button" class="player-name"> Player Name</h1>
-  	<p>Physical Work Put in: <a id="effortTotal">0</a></p>
-    <p>Money Saved Up: $<a id="moneyTotal">0</a></p>
-    <p>Fanbase: <a id="fans">0</a></p>
-    <div class="main-bttn-grid">
-      <button class="left-bttn" onClick="onEffortClicks()">Human Effort</button>
-      <button class="right-bttn" onClick="onCollectPay()">Collect Paycheck</button>
-  	</div>
-  </div>
-  
-  <div class="grid-section">
-  	<h1>Stats</h1>
-    <p>Total Physical Work: <a id="">0</a></p>
-    <p>Net Worth: <a id="">0</a></p>
-    <p>Highest Amount of Fans: <a id="">0</a></p>
-    <p>Total albums sold: <a id="">0</a></p>
-    <p>Total Songs Written: <a id="">0</a></p>
-    <p>Total Songs Recorded: <a id="">0</a></p>
-    <p>Total Songs Public: <a id="">0</a></p>
-    <h1>Help</h1>
-    <p>Text with infoform hovering over button</p>
-    <h1>Save</h1>
-    <p>Make buttons for saving</p>
-  </div>
-  
-  	<div class="music-grid">
-  		<div class="grid-section" class="upgrades">
-        	<h1 class="music-title">Store</h1>
-            <div class="upgrade-grid">
-              <button>Cheap Mic $<a id="">30</a></button>
-              <button>Cheap Instrument $<a id="">50</a></button>
-              <button id="musicSoftware" type="button" onClick="onBuyDaw()">Cheap Music Software $<a id="dawPrice">50</a></button>
-              <button id="camera" type="button" onClick="onBuyCamera()">Cheap Camera $<a id="cameraPrice">100</a></button>
-              <button>Better Mic $<a id="">100</a></button>
-              <button>Better Instrument $<a id="">150</a></button>
-              <button id="musicSoftware" type="button" onClick="onBuyDaw()">Better Music Software $<a id="dawPrice">190</a></button>
-              <button id="camera" type="button" onClick="onBuyCamera()">Cheap Camera $<a id="cameraPrice">100</a></button>
-              <button>Clothing $<a id="">200</a></button>
-              <button>Guitar $<a id="">200</a></button>
-              <button>Laptop $<a id="">200</a></button>
-              <button>Autotune $<a id="">200</a></button>
-              <button>Keyboard $<a id="">200</a></button>
-              <button>MidiKeyboard $<a id="">200</a></button>
-              <button>Cool Car $<a id="">1000</a></button>
-              <button>Big House $<a id="">10000</a></button>
-              <button id="" type="button" onClick="">Self Promote on Social Media</button>
-          </div>
-        </div>
-  		<div class="grid-section">
-        	<h1 class="music-title">Studio</h1>
-            <div class="upgrade-grid">
-            <button id="" type="button" onClick="">Practice Instruments</button>
-            <button id="" type="button" onClick="">Write Song</button>
-            <button id="" type="button" onClick="">Record Song</button>
-            <button id="" type="button" onClick="">Upload Song</button>
-			<button id="beatMaking" type="button" onClick="onProduce()">Make Beat</button>
-			<button id="videoMaking" type="button" onClick="onVideo()">Make Music Video</button>
-            </div>
-        </div>
-  	</div>
-    
+	<div class="grid-section">
+		<h1 type="button" onClick="nameChange()" id="nameText" class="player-name">Player Name</h1>
+		<p>Physical Work Put in: <a id="effortTotal">0</a></p>
+		<p>Money Saved Up: $<a id="moneyTotal">0</a></p>
+		<p>Fanbase: <a id="fans">0</a></p>
+		<div class="main-bttn-grid">
+			<button class="left-bttn" onClick="onEffortClicks()">Human Effort</button>
+			<button class="right-bttn" onClick="onCollectPay()">Collect Paycheck</button>
+		</div>
+	</div>
+
+
+	<div class="grid-section">
+		<h1>Stats</h1>
+		<p>Total Physical Work: <a id="effortStat">0</a></p>
+		<p>Net Worth: <a id="moneyStat">0</a></p>
+		<p>Highest Amount of Fans: <a id="fansStat">0</a></p>
+		<p>Total albums sold: <a id="">0</a></p>
+		<p>Total Songs Written: <a id="">0</a></p>
+		<p>Total Songs Recorded: <a id="">0</a></p>
+		<p>Total Songs Public: <a id="">0</a></p>
+		
+		<h1>Help</h1>
+		<p>Text with infoform hovering over button</p>
+		
+		<h1>Save</h1>
+		<p>Make buttons for saving</p>
+	</div>
+
+
+	<div class="music-grid">
+		<div class="grid-section" class="upgrades">
+			<h1 class="music-title">Store</h1>
+			<div class="upgrade-grid">
+				<button id="micBtn" onClick="buyMic()">Buy Mic $<a id="micPrice">0</a></button>
+				<button id="softBtn" onClick="buySoftware()">Buy Music Software $<a id="softwarePrice">0</a></button>
+				<button id="cloBtn" onClick="buyClothes()">Clothing $<a id="clothesPrice">0</a></button>
+				<button id="guiBtn" onClick="buyGuitar()">Guitar $<a id="guitarPrice">0</a></button>
+				<button id="camBtn" onClick="buyCamera()">Buy Camera $<a id="cameraPrice">0</a></button>
+				<button id="keyBtn" onClick="buyKeys()">Keyboard $<a id="keysPrice">0</a></button>
+				<button id="pcBtn" onClick="buyPC()">Laptop $<a id="pcPrice">0</a></button>
+				<button id="carBtn" onClick="buyCar()">Cool Car $<a id="carPrice">0</a></button>
+				<button id="midBtn" onClick="buyMidi()">MidiKeyboard $<a id="midiPrice">0</a></button>
+				<button id="tunBtn" onClick="buyAutotune()">Autotune $<a id="autotunePrice">0</a></button>
+				<button id="houBtn" onClick="buyHouse()">Big House $<a id="housePrice">0</a></button>
+			</div>
+		</div>
+		
+		<div class="grid-section">
+			<h1 class="music-title">Studio</h1>
+			<div class="upgrade-grid">
+				<button id="" type="button" onClick="">Practice Instruments</button>
+				<button id="" type="button" onClick="">Write Song</button>
+				<button id="" type="button" onClick="">Record Song</button>
+				<button id="" type="button" onClick="">Upload Song</button>
+				<button id="beatMaking" type="button" onClick="onProduce()">Make Beat</button>
+				<button id="videoMaking" type="button" onClick="onVideo()">Make Music Video</button>
+				<button id="" type="button" onClick="">Self Promote on Social Media</button>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
