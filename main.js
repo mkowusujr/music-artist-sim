@@ -30,6 +30,8 @@ document.getElementById('nameText').innerHTML = name;
 Stats Section
 =============================================================================*/ 
 var beatRate = 3;
+var songsWritten = 0, songsRecorded = 0, songsUploaded = 0;
+var qwritten = 0, qrecorded = 0;
 /*=============================================================================
 Store Upgrades
 =============================================================================*/ 
@@ -115,8 +117,8 @@ function buyHouse(){
 /*=============================================================================
 Music Events
 =============================================================================*/ 
-var play = 10, write = 30, record = 60, upload = 5;
-var beat = 120, video = 240, social = 90, show = 360;
+var play = 60, write = 120, record = 240, upload = 360;
+var beat = 600, video = 720, social = 480, show = 840;
 
 function onPlay(){
 	if(effort >= play){
@@ -130,6 +132,7 @@ function onWrite(){
 		effort -= write;
 		effortRate += 0.25;
 		write = Math.ceil(Math.pow(write, 1.05));
+		songsWritten += 1;
 	}
 }
 function onRecord(){
@@ -137,6 +140,9 @@ function onRecord(){
 		effort -= record;
 		effortRate += 0.5;
 		record = Math.ceil(Math.pow(record, 1.05));
+		qwritten -= 1;
+		qrecoreded += 1;
+		songsRecorded += 1;
 	}
 }
 
@@ -146,6 +152,8 @@ function onUpload(){
 		effortRate += 1;
 		upload = Math.ceil(Math.pow(upload, 1.05));
 		fanCount += (effortRate % 10);
+		qrecorded -= 1;
+		songsUploaded += 1;
 	}
 }
 
@@ -200,8 +208,6 @@ window.setInterval(function(){
 
 
 window.setInterval(function(){
-	
-	
 	document.getElementById('effortTotal').innerHTML = effort;
     document.getElementById('effortStat').innerHTML = totalEffort;
     document.getElementById('moneyTotal').innerHTML = money;
@@ -210,6 +216,10 @@ window.setInterval(function(){
 	document.getElementById('fansStat').innerHTML = totalFanCount;
 	document.getElementById('joy').innerHTML = effortRate;
 	
+	// Stats
+	document.getElementById('effortTotal').innerHTML = songsWritten;
+	document.getElementById('effortTotal').innerHTML = songsRecorded;
+	document.getElementById('effortTotal').innerHTML = songsUploaded;
 	
 	// Prices
 	document.getElementById('micPrice').innerHTML = micPrice;
@@ -346,9 +356,27 @@ window.setInterval(function(){
 	
 	// studio
 	document.getElementById('play').innerHTML = play;
+	if (effort < play) {
+		document.getElementById('playbtn').style.opacity='0.6';
+		document.getElementById('playbtn').style.cursor='not-allowed';
+		document.getElementById('playbtn').setAttribute('disabled', 'disabled');
+	} else {
+		document.getElementById('playbtn').style.opacity='1';
+		document.getElementById('playbtn').style.cursor='pointer';
+		document.getElementById('playbtn').removeAttribute('disabled');
+	}
 	document.getElementById('write').innerHTML = write;
+	if (effort < write) {
+		document.getElementById('writebtn').style.opacity='0.6';
+		document.getElementById('writebtn').style.cursor='not-allowed';
+		document.getElementById('writebtn').setAttribute('disabled', 'disabled');
+	} else {
+		document.getElementById('writebtn').style.opacity='1';
+		document.getElementById('writebtn').style.cursor='pointer';
+		document.getElementById('writebtn').removeAttribute('disabled');
+	}
 	document.getElementById('record').innerHTML = record;
-	if (micPrice < 21) {
+	if ((micPrice < 21) || (qwritten > 0) || (effort < record)) {
 		document.getElementById('recordbtn').style.opacity='0.6';
 		document.getElementById('recordbtn').style.cursor='not-allowed';
 		document.getElementById('recordbtn').setAttribute('disabled', 'disabled');
@@ -358,7 +386,7 @@ window.setInterval(function(){
 		document.getElementById('recordbtn').removeAttribute('disabled');
 	}
 	document.getElementById('upload').innerHTML = upload;
-	if (softwarePrice < 86 && micPrice <21) {
+	if ((softwarePrice < 86) || (micPrice <21) || (qrecorded > 0) || (effort < upload)) {
 		document.getElementById('uploadbtn').style.opacity='0.6';
 		document.getElementById('uploadbtn').style.cursor='not-allowed';
 		document.getElementById('uploadbtn').setAttribute('disabled', 'disabled');
@@ -368,8 +396,44 @@ window.setInterval(function(){
 		document.getElementById('uploadbtn').removeAttribute('disabled');
 	}
 	document.getElementById('beat').innerHTML = beat;
+	if ((softwarePrice < 1000) || (effort < beat)) {
+		document.getElementById('beatbtn').style.opacity='0.6';
+		document.getElementById('beatbtn').style.cursor='not-allowed';
+		document.getElementById('beatbtn').setAttribute('disabled', 'disabled');
+	} else {
+		document.getElementById('beatbtn').style.opacity='1';
+		document.getElementById('beatbtn').style.cursor='pointer';
+		document.getElementById('beatbtn').removeAttribute('disabled');
+	}
 	document.getElementById('video').innerHTML = video;
+	if ((cameraPrice < 7000) || (effort < video)) {
+		document.getElementById('videobtn').style.opacity='0.6';
+		document.getElementById('videobtn').style.cursor='not-allowed';
+		document.getElementById('videobtn').setAttribute('disabled', 'disabled');
+	} else {
+		document.getElementById('videobtn').style.opacity='1';
+		document.getElementById('videobtn').style.cursor='pointer';
+		document.getElementById('videobtn').removeAttribute('disabled');
+	}
 	document.getElementById('social').innerHTML = social;
+	if ((songsUploaded %5 == 0) || (effort < social)) {
+		document.getElementById('socialbtn').style.opacity='0.6';
+		document.getElementById('socialbtn').style.cursor='not-allowed';
+		document.getElementById('socialbtn').setAttribute('disabled', 'disabled');
+	} else {
+		document.getElementById('socialbtn').style.opacity='1';
+		document.getElementById('socialbtn').style.cursor='pointer';
+		document.getElementById('socialbtn').removeAttribute('disabled');
+	}
 	document.getElementById('show').innerHTML = show;
+	if ((songsUploaded %12 == 0) || (effort < show)) {
+		document.getElementById('showbtn').style.opacity='0.6';
+		document.getElementById('showbtn').style.cursor='not-allowed';
+		document.getElementById('showbtn').setAttribute('disabled', 'disabled');
+	} else {
+		document.getElementById('showbtn').style.opacity='1';
+		document.getElementById('showbtn').style.cursor='pointer';
+		document.getElementById('showbtn').removeAttribute('disabled');
+	}
 }, 1);
 
