@@ -123,25 +123,26 @@ var beat = 600, video = 720, social = 480, show = 840;
 function onPlay(){
 	if(effort >= play){
 		effort -= play;
-		effortRate += 0.125;
+		effortRate += 0.25;
 		play = Math.ceil(Math.pow(play, 1.05));
 	}
 }
 function onWrite(){
 	if(effort >= write){
 		effort -= write;
-		effortRate += 0.25;
+		effortRate += 1;
 		write = Math.ceil(Math.pow(write, 1.05));
+		qwritten += 1;
 		songsWritten += 1;
 	}
 }
 function onRecord(){
 	if(effort >= record){
 		effort -= record;
-		effortRate += 0.5;
+		effortRate += 2;
 		record = Math.ceil(Math.pow(record, 1.05));
 		qwritten -= 1;
-		qrecoreded += 1;
+		qrecorded += 1;
 		songsRecorded += 1;
 	}
 }
@@ -149,7 +150,7 @@ function onRecord(){
 function onUpload(){
 	if(effort >= upload){
 		effort -= upload;
-		effortRate += 1;
+		effortRate += 5;
 		upload = Math.ceil(Math.pow(upload, 1.05));
 		fanCount += (effortRate % 10);
 		qrecorded -= 1;
@@ -160,7 +161,7 @@ function onUpload(){
 function onPromote(){
 	if(effort >= social){
 		effort -= social;
-		effortRate -= .5;
+		effortRate -= 10;
 		social = Math.ceil(Math.pow(social, 1.05));
 		fanCount += (fanCount * 1.5); // change Later to use rand
 	}
@@ -169,7 +170,7 @@ function onPromote(){
 function onProduce(){
 	if(effort >= beat){
 		effort -= beat;
-		effortRate += 2;
+		effortRate += 15;
 		beat = Math.ceil(Math.pow(beat, 1.05));
 		fanCount += (fanCount * 1.8); // change Later to use rand
 	}
@@ -178,7 +179,7 @@ function onProduce(){
 function onVideo(){
 	if(effort >= video){
 		effort -= video;
-		effortRate += 3.5;
+		effortRate += 25;
 		video = Math.floor(Math.pow(video, 1.025));
 		fanCount += (fanCount * 2); // change Later to use rand
 	}
@@ -187,7 +188,7 @@ function onVideo(){
 function onTour(){
 	if(effort >= show){
 		effort -= show;
-		effortRate += 5;
+		effortRate += 50;
 		show = Math.floor(Math.pow(show, 1.025));
 		fanCount += (fanCount * 2.5); // change Later to use rand
 	}
@@ -215,11 +216,14 @@ window.setInterval(function(){
 	document.getElementById('fans').innerHTML = fanCount;
 	document.getElementById('fansStat').innerHTML = totalFanCount;
 	document.getElementById('joy').innerHTML = effortRate;
-	
+	document.getElementById('qwritten').innerHTML = qwritten;
+	document.getElementById('qrecorded').innerHTML = qrecorded;
+
+
 	// Stats
-	document.getElementById('effortTotal').innerHTML = songsWritten;
-	document.getElementById('effortTotal').innerHTML = songsRecorded;
-	document.getElementById('effortTotal').innerHTML = songsUploaded;
+	document.getElementById('songsWritten').innerHTML = songsWritten;
+	document.getElementById('songsRecorded').innerHTML = songsRecorded;
+	document.getElementById('songsUploaded').innerHTML = songsUploaded;
 	
 	// Prices
 	document.getElementById('micPrice').innerHTML = micPrice;
@@ -376,7 +380,7 @@ window.setInterval(function(){
 		document.getElementById('writebtn').removeAttribute('disabled');
 	}
 	document.getElementById('record').innerHTML = record;
-	if ((micPrice < 21) || (qwritten > 0) || (effort < record)) {
+	if ((micPrice < 21) || (qwritten < 0) || (effort < record)) {
 		document.getElementById('recordbtn').style.opacity='0.6';
 		document.getElementById('recordbtn').style.cursor='not-allowed';
 		document.getElementById('recordbtn').setAttribute('disabled', 'disabled');
@@ -386,7 +390,7 @@ window.setInterval(function(){
 		document.getElementById('recordbtn').removeAttribute('disabled');
 	}
 	document.getElementById('upload').innerHTML = upload;
-	if ((softwarePrice < 86) || (micPrice <21) || (qrecorded > 0) || (effort < upload)) {
+	if ((softwarePrice < 86) || (micPrice <21) || (qrecorded < 0) || (effort < upload)) {
 		document.getElementById('uploadbtn').style.opacity='0.6';
 		document.getElementById('uploadbtn').style.cursor='not-allowed';
 		document.getElementById('uploadbtn').setAttribute('disabled', 'disabled');
