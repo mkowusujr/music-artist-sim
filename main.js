@@ -5,11 +5,11 @@ var effort = 0, money = 0, fanCount = 0;
 var totalEffort = 0, totalMoney = 0, totalFanCount = 0;
 var effortRate = 1;
 var payRate = 12;
+var fanRate = 0;
 
 function onEffortClicks(){
 	effort += effortRate;
 	totalEffort += effortRate;
-    
 }
 function onCollectPay(){
 	if(effort >= 60 && effort != 0){
@@ -17,7 +17,6 @@ function onCollectPay(){
 		totalMoney += payRate;
 		effort -= 60;
 	}
-
 }
 
 function nameChange(){
@@ -32,6 +31,7 @@ Stats Section
 var beatRate = 3;
 var songsWritten = 0, songsRecorded = 0, songsUploaded = 0;
 var qwritten = 0, qrecorded = 0;
+var updateFanRate = 0;
 /*=============================================================================
 Store Upgrades
 =============================================================================*/ 
@@ -40,6 +40,7 @@ function buyMic(){
 	if (money >= micPrice) {
 		money -= micPrice;
 		micPrice = Math.floor(Math.pow(micPrice, 1.1));
+		fanRate = Math.floor(Math.pow(micPrice, 0.2))
 	}
 }
 var softwarePrice = 85;
@@ -47,6 +48,7 @@ function buySoftware(){
 	if (money >= softwarePrice) {
 		money -= softwarePrice;
 		softwarePrice = Math.floor(Math.pow(softwarePrice, 1.2));
+		fanRate = Math.floor(Math.pow(softwarePrice, 0.4))
 	}
 }
 var clothesPrice = 230;
@@ -152,7 +154,7 @@ function onUpload(){
 		effort -= upload;
 		effortRate += 5;
 		upload = Math.ceil(Math.pow(upload, 1.05));
-		fanCount += (effortRate % 10);
+		updateFanRate = Math.floor(Math.random() * (fanRate));
 		qrecorded -= 1;
 		songsUploaded += 1;
 	}
@@ -198,17 +200,24 @@ function onTour(){
 /*=============================================================================
 Main Loop
 =============================================================================*/ 
-function fanSupport(){
-	money += (fanCount * effortRate);
-	totalMoney += (fanCount * effortRate);
+
+function fanGen(){
+	if (fanRate != 0)
+		increase = Math.floor(Math.random() * (fanRate));
+	if (upload > 360){
+		var fanIncr = updateFanRate;
+		fanCount += fanIncr;
+		totalFanCount += fanIncr;
+	}
 }
 
 window.setInterval(function(){
-	fanSupport();
+	fanGen();
 }, 1000);
 
 
 window.setInterval(function(){
+	document.title = `$${totalMoney} Net Worth - Rags to Riches`;
 	document.getElementById('effortTotal').innerHTML = effort;
     document.getElementById('effortStat').innerHTML = totalEffort;
     document.getElementById('moneyTotal').innerHTML = money;
