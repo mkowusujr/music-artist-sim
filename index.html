@@ -11,6 +11,7 @@
 		<p>Physical Work Put in: <a id="effortTotal">0</a></p>
 		<p>Money Saved Up: $<a id="moneyTotal">0</a></p>
 		<p>Fanbase: <a id="fans">0</a></p>
+		<p>Joy Level: <a id="joy">0</a></p>
 		<div class="main-bttn-grid">
 			<button class="left-bttn" onClick="onEffortClicks()">Human Effort</button>
 			<button class="right-bttn" onClick="onCollectPay()">Collect Paycheck</button>
@@ -21,7 +22,7 @@
 	<div class="grid-section">
 		<h1>Stats</h1>
 		<p>Total Physical Work: <a id="effortStat">0</a></p>
-		<p>Net Worth: <a id="moneyStat">0</a></p>
+		<p>Net Worth: $<a id="moneyStat">0</a></p>
 		<p>Highest Amount of Fans: <a id="fansStat">0</a></p>
 		<p>Total albums sold: <a id="">0</a></p>
 		<p>Total Songs Written: <a id="">0</a></p>
@@ -57,13 +58,14 @@
 		<div class="grid-section">
 			<h1 class="music-title">Studio</h1>
 			<div class="upgrade-grid">
-				<button id="" type="button" onClick="">Practice Instruments</button>
-				<button id="" type="button" onClick="">Write Song</button>
-				<button id="" type="button" onClick="">Record Song</button>
-				<button id="" type="button" onClick="">Upload Song</button>
-				<button id="beatMaking" type="button" onClick="onProduce()">Make Beat</button>
-				<button id="videoMaking" type="button" onClick="onVideo()">Make Music Video</button>
-				<button id="" type="button" onClick="">Self Promote on Social Media</button>
+				<button id="playbtn" onClick="onPlay()">Practice Singing <a id="play">0</a></button>
+				<button id="writebtn" onClick="onWrite()">Write Song <a id="write">0</a></button>
+				<button id="recordbtn" onClick="onRecord()">Record Song <a id="record">0</a></button>
+				<button id="uploadbtn" onClick="onUpload()">Upload Song <a id="upload">0</a></button>
+				<button id="socialbtn" onClick="onPromote()">Self Promote on Social Media <a id="social">0</a></button>
+				<button id="beatbtn" onClick="onProduce()">Make Beat <a id="beat">0</a></button>
+				<button id="videobtn" onClick="onVideo()">Make Music Video <a id="video">0</a></button>
+				<button id="showbtn" onClick="onTour()">Live Show <a id="show">0</a></button>
 			</div>
 		</div>
 	</div>
