@@ -217,7 +217,7 @@ window.setInterval(function(){
 
 
 window.setInterval(function(){
-	document.title = `$${totalMoney} Net Worth - Rags to Riches`;
+	document.title = `$${totalMoney} Net Worth - Music Artist Sim`;
 	document.getElementById('effortTotal').innerHTML = effort;
     document.getElementById('effortStat').innerHTML = totalEffort;
     document.getElementById('moneyTotal').innerHTML = money;
