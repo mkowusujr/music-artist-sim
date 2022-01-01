@@ -389,7 +389,7 @@ window.setInterval(function(){
 		document.getElementById('writebtn').removeAttribute('disabled');
 	}
 	document.getElementById('record').innerHTML = record;
-	if ((micPrice < 21) || (qwritten < 0) || (effort < record)) {
+	if ((micPrice < 21) || (qwritten <= 0) || (effort < record)) {
 		document.getElementById('recordbtn').style.opacity='0.6';
 		document.getElementById('recordbtn').style.cursor='not-allowed';
 		document.getElementById('recordbtn').setAttribute('disabled', 'disabled');
@@ -399,7 +399,7 @@ window.setInterval(function(){
 		document.getElementById('recordbtn').removeAttribute('disabled');
 	}
 	document.getElementById('upload').innerHTML = upload;
-	if ((softwarePrice < 86) || (micPrice <21) || (qrecorded < 0) || (effort < upload)) {
+	if ((softwarePrice < 86) || (micPrice <21) || (qrecorded <= 0) || (effort < upload)) {
 		document.getElementById('uploadbtn').style.opacity='0.6';
 		document.getElementById('uploadbtn').style.cursor='not-allowed';
 		document.getElementById('uploadbtn').setAttribute('disabled', 'disabled');
