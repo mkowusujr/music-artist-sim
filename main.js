@@ -1,6 +1,6 @@
 /*=============================================================================
 Main Buttons
-=============================================================================*/ 
+=============================================================================*/
 var effort = 0, money = 0, fanCount = 0;
 var totalEffort = 0, totalMoney = 0, totalFanCount = 0;
 var effortRate = 1;
@@ -21,20 +21,20 @@ function onCollectPay(){
 
 function nameChange(){
 let name = prompt("Enter Your Stage Name", "Name");
-document.getElementById('nameText').innerHTML = name;	
+document.getElementById('nameText').innerHTML = name;
 }
 
 
 /*=============================================================================
 Stats Section
-=============================================================================*/ 
+=============================================================================*/
 var beatRate = 3;
 var songsWritten = 0, songsRecorded = 0, songsUploaded = 0;
 var qwritten = 0, qrecorded = 0;
 var updateFanRate = 0;
 /*=============================================================================
 Store Upgrades
-=============================================================================*/ 
+=============================================================================*/
 var micPrice = 20;
 function buyMic(){
 	if (money >= micPrice) {
@@ -118,7 +118,7 @@ function buyHouse(){
 
 /*=============================================================================
 Music Events
-=============================================================================*/ 
+=============================================================================*/
 var play = 60, write = 120, record = 240, upload = 360;
 var beat = 600, video = 720, social = 480, show = 840;
 
@@ -196,10 +196,39 @@ function onTour(){
 	}
 }
 
+/*=============================================================================
+Game Data
+=============================================================================*/
+/*function saveGame(){
+	var saveData = {
+		effort: effort,
+		totalEffort: totalEffort,
+		effortRate: effortRate,
+		money: money,
+		fanCount: fanCount,
+		totalFanCount: totalFanCount,
+
+
+		var effort = 0, money = 0, fanCount = 0;
+		var totalEffort = 0, totalMoney = 0, totalFanCount = 0;
+		var effortRate = 1;
+
+		var fanRate = 0;
+		var beatRate = 3;
+		var micPrice = 20;
+		var songsWritten = 0, songsRecorded = 0, songsUploaded = 0;
+		var qwritten = 0, qrecorded = 0;
+		var updateFanRate = 0;
+		var play = 60, write = 120, record = 240, upload = 360;
+		var beat = 600, video = 720, social = 480, show = 840;
+	};
+}*/
+
+
 
 /*=============================================================================
 Main Loop
-=============================================================================*/ 
+=============================================================================*/
 
 function fanGen(){
 	if (fanRate != 0)
@@ -228,12 +257,20 @@ window.setInterval(function(){
 	document.getElementById('qwritten').innerHTML = qwritten;
 	document.getElementById('qrecorded').innerHTML = qrecorded;
 
-
+	if (effort < 60) {
+		document.getElementById('paybtn').style.opacity='0.6';
+		document.getElementById('paybtn').style.cursor='not-allowed';
+		document.getElementById('paybtn').setAttribute('disabled', 'disabled');
+	} else {
+		document.getElementById('paybtn').style.opacity='1';
+		document.getElementById('paybtn').style.cursor='pointer';
+		document.getElementById('paybtn').removeAttribute('disabled');
+	}
 	// Stats
 	document.getElementById('songsWritten').innerHTML = songsWritten;
 	document.getElementById('songsRecorded').innerHTML = songsRecorded;
 	document.getElementById('songsUploaded').innerHTML = songsUploaded;
-	
+
 	// Prices
 	document.getElementById('micPrice').innerHTML = micPrice;
 	document.getElementById('softwarePrice').innerHTML = softwarePrice;
@@ -246,7 +283,7 @@ window.setInterval(function(){
 	document.getElementById('midiPrice').innerHTML = midiPrice;
 	document.getElementById('autotunePrice').innerHTML = autotunePrice;
 	document.getElementById('housePrice').innerHTML = housePrice;
-	
+
 	// Upgrades
 	if (money < micPrice) {
 		document.getElementById('micBtn').style.opacity='0.6';
@@ -257,8 +294,8 @@ window.setInterval(function(){
 		document.getElementById('micBtn').style.cursor='pointer';
 		document.getElementById('micBtn').removeAttribute('disabled');
 	}
-	
-	
+
+
 	if (money < softwarePrice) {
 		document.getElementById('softBtn').style.opacity='0.6';
 		document.getElementById('softBtn').style.cursor='not-allowed';
@@ -268,8 +305,8 @@ window.setInterval(function(){
 		document.getElementById('softBtn').style.cursor='pointer';
 		document.getElementById('softBtn').removeAttribute('disabled');
 	}
-	
-	
+
+
 	if (money < clothesPrice) {
 		document.getElementById('cloBtn').style.opacity='0.6';
 		document.getElementById('cloBtn').style.cursor='not-allowed';
@@ -279,8 +316,8 @@ window.setInterval(function(){
 		document.getElementById('cloBtn').style.cursor='pointer';
 		document.getElementById('cloBtn').removeAttribute('disabled');
 	}
-	
-	
+
+
 	if (money < guitarPrice) {
 		document.getElementById('guiBtn').style.opacity='0.6';
 		document.getElementById('guiBtn').style.cursor='not-allowed';
@@ -290,8 +327,8 @@ window.setInterval(function(){
 		document.getElementById('guiBtn').style.cursor='pointer';
 		document.getElementById('guiBtn').removeAttribute('disabled');
 	}
-	
-	
+
+
 	if (money < cameraPrice) {
 		document.getElementById('camBtn').style.opacity='0.6';
 		document.getElementById('camBtn').style.cursor='not-allowed';
@@ -301,8 +338,8 @@ window.setInterval(function(){
 		document.getElementById('camBtn').style.cursor='pointer';
 		document.getElementById('camBtn').removeAttribute('disabled');
 	}
-	
-	
+
+
 	if (money < keysPrice) {
 		document.getElementById('keyBtn').style.opacity='0.6';
 		document.getElementById('keyBtn').style.cursor='not-allowed';
@@ -312,8 +349,8 @@ window.setInterval(function(){
 		document.getElementById('keyBtn').style.cursor='pointer';
 		document.getElementById('keyBtn').removeAttribute('disabled');
 	}
-	
-	
+
+
 	if (money < pcPrice) {
 		document.getElementById('pcBtn').style.opacity='0.6';
 		document.getElementById('pcBtn').style.cursor='not-allowed';
@@ -323,8 +360,8 @@ window.setInterval(function(){
 		document.getElementById('pcBtn').style.cursor='pointer';
 		document.getElementById('pcBtn').removeAttribute('disabled');
 	}
-	
-	
+
+
 	if (money < carPrice) {
 		document.getElementById('carBtn').style.opacity='0.6';
 		document.getElementById('carBtn').style.cursor='not-allowed';
@@ -334,8 +371,8 @@ window.setInterval(function(){
 		document.getElementById('carBtn').style.cursor='pointer';
 		document.getElementById('carBtn').removeAttribute('disabled');
 	}
-	
-	
+
+
 	if (money < midiPrice) {
 		document.getElementById('midBtn').style.opacity='0.6';
 		document.getElementById('midBtn').style.cursor='not-allowed';
@@ -354,8 +391,8 @@ window.setInterval(function(){
 		document.getElementById('tunBtn').style.cursor='pointer';
 		document.getElementById('tunBtn').removeAttribute('disabled');
 	}
-	
-	
+
+
 	if (money < housePrice) {
 		document.getElementById('houBtn').style.opacity='0.6';
 		document.getElementById('houBtn').style.cursor='not-allowed';
@@ -365,8 +402,8 @@ window.setInterval(function(){
 		document.getElementById('houBtn').style.cursor='pointer';
 		document.getElementById('houBtn').removeAttribute('disabled');
 	}
-	
-	
+
+
 	// studio
 	document.getElementById('play').innerHTML = play;
 	if (effort < play) {
@@ -449,4 +486,3 @@ window.setInterval(function(){
 		document.getElementById('showbtn').removeAttribute('disabled');
 	}
 }, 1);
-
