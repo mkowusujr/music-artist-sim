@@ -1,5 +1,5 @@
 /*=============================================================================
-Main Buttons
+Variables
 =============================================================================*/
 var nameSave = "Player Name";
 var effort = 0, money = 0, fanCount = 0;
@@ -8,6 +8,14 @@ var effortRate = 1;
 var payRate = 12;
 var fanRate = 0;
 
+var beatRate = 3;
+var songsWritten = 0, songsRecorded = 0, songsUploaded = 0;
+var qwritten = 0, qrecorded = 0;
+var updateFanRate = 0;
+
+
+var play = 60, write = 120, record = 240, upload = 360;
+var beat = 600, video = 720, social = 480, show = 840;
 function onEffortClicks(){
 	effort += effortRate;
 	totalEffort += effortRate;
@@ -29,10 +37,7 @@ function nameChange(){
 /*=============================================================================
 Stats Section
 =============================================================================*/
-var beatRate = 3;
-var songsWritten = 0, songsRecorded = 0, songsUploaded = 0;
-var qwritten = 0, qrecorded = 0;
-var updateFanRate = 0;
+
 /*=============================================================================
 Store Upgrades
 =============================================================================*/
@@ -120,8 +125,7 @@ function buyHouse(){
 /*=============================================================================
 Music Events
 =============================================================================*/
-var play = 60, write = 120, record = 240, upload = 360;
-var beat = 600, video = 720, social = 480, show = 840;
+
 
 function onPlay(){
 	if(effort >= play){
@@ -295,10 +299,10 @@ function resetGame(){
 window.onload = function(){
 	loadGame();
 }
-/*=============================================================================
-Main Loop
-=============================================================================*/
 
+/*=============================================================================
+Helper Functions
+=============================================================================*/
 function fanGen(){
 	if (fanRate != 0)
 		increase = Math.floor(Math.random() * (fanRate));
@@ -309,12 +313,8 @@ function fanGen(){
 	}
 }
 
-window.setInterval(function(){
-	fanGen();
-}, 1000);
-
-
-window.setInterval(function(){
+function updateHtmlElements(){
+	// Section One
 	document.title = `$${totalMoney} Net Worth - Music Artist Sim`;
 	document.getElementById('nameText').innerHTML = nameSave;
 	document.getElementById('effortTotal').innerHTML = effort;
@@ -327,16 +327,7 @@ window.setInterval(function(){
 	document.getElementById('qwritten').innerHTML = qwritten;
 	document.getElementById('qrecorded').innerHTML = qrecorded;
 
-	if (effort < 60) {
-		document.getElementById('paybtn').style.opacity='0.6';
-		document.getElementById('paybtn').style.cursor='not-allowed';
-		document.getElementById('paybtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('paybtn').style.opacity='1';
-		document.getElementById('paybtn').style.cursor='pointer';
-		document.getElementById('paybtn').removeAttribute('disabled');
-	}
-	// Stats
+	// Stats Section
 	document.getElementById('songsWritten').innerHTML = songsWritten;
 	document.getElementById('songsRecorded').innerHTML = songsRecorded;
 	document.getElementById('songsUploaded').innerHTML = songsUploaded;
@@ -353,210 +344,68 @@ window.setInterval(function(){
 	document.getElementById('midiPrice').innerHTML = midiPrice;
 	document.getElementById('autotunePrice').innerHTML = autotunePrice;
 	document.getElementById('housePrice').innerHTML = housePrice;
-
-	// Upgrades
-	if (money < micPrice) {
-		document.getElementById('micBtn').style.opacity='0.6';
-		document.getElementById('micBtn').style.cursor='not-allowed';
-		document.getElementById('micBtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('micBtn').style.opacity='1';
-		document.getElementById('micBtn').style.cursor='pointer';
-		document.getElementById('micBtn').removeAttribute('disabled');
-	}
-
-
-	if (money < softwarePrice) {
-		document.getElementById('softBtn').style.opacity='0.6';
-		document.getElementById('softBtn').style.cursor='not-allowed';
-		document.getElementById('softBtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('softBtn').style.opacity='1';
-		document.getElementById('softBtn').style.cursor='pointer';
-		document.getElementById('softBtn').removeAttribute('disabled');
-	}
-
-
-	if (money < clothesPrice) {
-		document.getElementById('cloBtn').style.opacity='0.6';
-		document.getElementById('cloBtn').style.cursor='not-allowed';
-		document.getElementById('cloBtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('cloBtn').style.opacity='1';
-		document.getElementById('cloBtn').style.cursor='pointer';
-		document.getElementById('cloBtn').removeAttribute('disabled');
-	}
-
-
-	if (money < guitarPrice) {
-		document.getElementById('guiBtn').style.opacity='0.6';
-		document.getElementById('guiBtn').style.cursor='not-allowed';
-		document.getElementById('guiBtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('guiBtn').style.opacity='1';
-		document.getElementById('guiBtn').style.cursor='pointer';
-		document.getElementById('guiBtn').removeAttribute('disabled');
-	}
-
-
-	if (money < cameraPrice) {
-		document.getElementById('camBtn').style.opacity='0.6';
-		document.getElementById('camBtn').style.cursor='not-allowed';
-		document.getElementById('camBtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('camBtn').style.opacity='1';
-		document.getElementById('camBtn').style.cursor='pointer';
-		document.getElementById('camBtn').removeAttribute('disabled');
-	}
-
-
-	if (money < keysPrice) {
-		document.getElementById('keyBtn').style.opacity='0.6';
-		document.getElementById('keyBtn').style.cursor='not-allowed';
-		document.getElementById('keyBtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('keyBtn').style.opacity='1';
-		document.getElementById('keyBtn').style.cursor='pointer';
-		document.getElementById('keyBtn').removeAttribute('disabled');
-	}
-
-
-	if (money < pcPrice) {
-		document.getElementById('pcBtn').style.opacity='0.6';
-		document.getElementById('pcBtn').style.cursor='not-allowed';
-		document.getElementById('pcBtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('pcBtn').style.opacity='1';
-		document.getElementById('pcBtn').style.cursor='pointer';
-		document.getElementById('pcBtn').removeAttribute('disabled');
-	}
-
-
-	if (money < carPrice) {
-		document.getElementById('carBtn').style.opacity='0.6';
-		document.getElementById('carBtn').style.cursor='not-allowed';
-		document.getElementById('carBtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('carBtn').style.opacity='1';
-		document.getElementById('carBtn').style.cursor='pointer';
-		document.getElementById('carBtn').removeAttribute('disabled');
-	}
-
-
-	if (money < midiPrice) {
-		document.getElementById('midBtn').style.opacity='0.6';
-		document.getElementById('midBtn').style.cursor='not-allowed';
-		document.getElementById('midBtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('midBtn').style.opacity='1';
-		document.getElementById('midBtn').style.cursor='pointer';
-		document.getElementById('midBtn').removeAttribute('disabled');
-	}
-	if (money < autotunePrice) {
-		document.getElementById('tunBtn').style.opacity='0.6';
-		document.getElementById('tunBtn').style.cursor='not-allowed';
-		document.getElementById('tunBtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('tunBtn').style.opacity='1';
-		document.getElementById('tunBtn').style.cursor='pointer';
-		document.getElementById('tunBtn').removeAttribute('disabled');
-	}
-
-
-	if (money < housePrice) {
-		document.getElementById('houBtn').style.opacity='0.6';
-		document.getElementById('houBtn').style.cursor='not-allowed';
-		document.getElementById('houBtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('houBtn').style.opacity='1';
-		document.getElementById('houBtn').style.cursor='pointer';
-		document.getElementById('houBtn').removeAttribute('disabled');
-	}
-
-
+	
 	// studio
 	document.getElementById('play').innerHTML = play;
-	if (effort < play) {
-		document.getElementById('playbtn').style.opacity='0.6';
-		document.getElementById('playbtn').style.cursor='not-allowed';
-		document.getElementById('playbtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('playbtn').style.opacity='1';
-		document.getElementById('playbtn').style.cursor='pointer';
-		document.getElementById('playbtn').removeAttribute('disabled');
-	}
 	document.getElementById('write').innerHTML = write;
-	if (effort < write) {
-		document.getElementById('writebtn').style.opacity='0.6';
-		document.getElementById('writebtn').style.cursor='not-allowed';
-		document.getElementById('writebtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('writebtn').style.opacity='1';
-		document.getElementById('writebtn').style.cursor='pointer';
-		document.getElementById('writebtn').removeAttribute('disabled');
-	}
 	document.getElementById('record').innerHTML = record;
-	if ((micPrice < 21) || (qwritten <= 0) || (effort < record)) {
-		document.getElementById('recordbtn').style.opacity='0.6';
-		document.getElementById('recordbtn').style.cursor='not-allowed';
-		document.getElementById('recordbtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('recordbtn').style.opacity='1';
-		document.getElementById('recordbtn').style.cursor='pointer';
-		document.getElementById('recordbtn').removeAttribute('disabled');
-	}
 	document.getElementById('upload').innerHTML = upload;
-	if ((softwarePrice < 86) || (micPrice <21) || (qrecorded <= 0) || (effort < upload)) {
-		document.getElementById('uploadbtn').style.opacity='0.6';
-		document.getElementById('uploadbtn').style.cursor='not-allowed';
-		document.getElementById('uploadbtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('uploadbtn').style.opacity='1';
-		document.getElementById('uploadbtn').style.cursor='pointer';
-		document.getElementById('uploadbtn').removeAttribute('disabled');
-	}
 	document.getElementById('beat').innerHTML = beat;
-	if ((softwarePrice < 1000) || (effort < beat)) {
-		document.getElementById('beatbtn').style.opacity='0.6';
-		document.getElementById('beatbtn').style.cursor='not-allowed';
-		document.getElementById('beatbtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('beatbtn').style.opacity='1';
-		document.getElementById('beatbtn').style.cursor='pointer';
-		document.getElementById('beatbtn').removeAttribute('disabled');
-	}
 	document.getElementById('video').innerHTML = video;
-	if ((cameraPrice < 7000) || (effort < video)) {
-		document.getElementById('videobtn').style.opacity='0.6';
-		document.getElementById('videobtn').style.cursor='not-allowed';
-		document.getElementById('videobtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('videobtn').style.opacity='1';
-		document.getElementById('videobtn').style.cursor='pointer';
-		document.getElementById('videobtn').removeAttribute('disabled');
-	}
 	document.getElementById('social').innerHTML = social;
-	if ((songsUploaded %5 == 0) || (effort < social)) {
-		document.getElementById('socialbtn').style.opacity='0.6';
-		document.getElementById('socialbtn').style.cursor='not-allowed';
-		document.getElementById('socialbtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('socialbtn').style.opacity='1';
-		document.getElementById('socialbtn').style.cursor='pointer';
-		document.getElementById('socialbtn').removeAttribute('disabled');
-	}
 	document.getElementById('show').innerHTML = show;
-	if ((songsUploaded %12 == 0) || (effort < show)) {
-		document.getElementById('showbtn').style.opacity='0.6';
-		document.getElementById('showbtn').style.cursor='not-allowed';
-		document.getElementById('showbtn').setAttribute('disabled', 'disabled');
-	} else {
-		document.getElementById('showbtn').style.opacity='1';
-		document.getElementById('showbtn').style.cursor='pointer';
-		document.getElementById('showbtn').removeAttribute('disabled');
-	}
-}, 1);
+}
 
+function hideButton(conditional, bttnName){
+	if (conditional == true){
+		document.getElementById(bttnName).style.opacity='0.6';
+		document.getElementById(bttnName).style.cursor='not-allowed';
+		document.getElementById(bttnName).setAttribute('disabled', 'disabled');
+	} else {
+		document.getElementById(bttnName).style.opacity='1';
+		document.getElementById(bttnName).style.cursor='pointer';
+		document.getElementById(bttnName).removeAttribute('disabled');
+	}
+}
+
+function checkConditionals(){
+	// main section
+	hideButton((effort < 60), 'paybtn');
+	// store
+	hideButton((money < micPrice), 'micBtn');
+	hideButton((money < softwarePrice), 'softBtn');
+	hideButton((money < clothesPrice), 'cloBtn');
+	hideButton((money < guitarPrice), 'guiBtn');
+	hideButton((money < cameraPrice), 'camBtn');
+	hideButton((money < keysPrice), 'keyBtn');
+	hideButton((money < pcPrice), 'pcBtn');
+	hideButton((money < carPrice), 'carBtn');
+	hideButton((money < midiPrice), 'midBtn');
+	hideButton((money < autotunePrice), 'tunBtn');
+	hideButton((money < housePrice), 'houBtn');
+	// effort upgrades
+	hideButton((effort < play), 'playbtn');
+	hideButton((effort < write), 'writebtn');
+	hideButton(((micPrice < 21) || (qwritten <= 0) || (effort < record)), 'recordbtn');
+	hideButton(((softwarePrice < 86) || (micPrice <21) || (qrecorded <= 0) || (effort < upload)), 'uploadbtn');
+	hideButton(((softwarePrice < 1000) || (effort < beat)), 'beatbtn');
+	hideButton(((cameraPrice < 7000) || (effort < video)), 'videobtn');
+	hideButton(((songsUploaded %5 == 0) || (effort < social)), 'socialbtn');
+	hideButton(((songsUploaded %12 == 0) || (effort < show)), 'showbtn');
+}
+/*=============================================================================
+Window Loops
+=============================================================================*/
+// Updating Screen
+window.setInterval(function(){
+	updateHtmlElements();
+	checkConditionals();
+}, 1);
+// Fans per second
+window.setInterval(function(){
+	fanGen();
+}, 1000);
+// Save Loop
 window.setInterval(function(){
 	saveGame();
 }, 10000);
