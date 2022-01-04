@@ -2,96 +2,95 @@
 Global Changes
 ===========================================================*/
 body {
-	background-image:url('img/home.png');
-	background-repeat:no-repeat;
-	background-attachment:fixed;
-	background-size:100% 100%;
-	min-width: 500px;
+  background-image: url("img/home.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  min-width: 500px;
 }
 .main-grid {
-	display: grid;
-	grid-gap: 1.1vw;
-	grid-template-columns: 32vw 32vw 32vw;
-	padding: 10px;
-	width: 98vw;
-	height: 95vh;
+  display: grid;
+  grid-gap: 1.1vw;
+  grid-template-columns: 32vw 32vw 32vw;
+  padding: 10px;
+  width: 98vw;
+  height: 95vh;
 }
 .music-grid {
-	display: grid;
-	grid-row-gap: 2vh;
-	grid-template-rows: 46.5vh 46.5vh;
+  display: grid;
+  grid-row-gap: 2vh;
+  grid-template-rows: 46.5vh 46.5vh;
 }
 .grid-section {
-	position: relative;
-	overflow: auto;
-	background-color: rgba(255, 255, 255, 0.5);
-	padding-left: 20px;
-	padding-right: 20px;
-	padding-bottom: 20px;
-	border-radius: 8px;
+  position: relative;
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  border-radius: 8px;
 }
 Button {
-	border-radius: 8px;
-	text-align: left;
-	display: inline-block;
-	padding-top: 16px;
-	padding-bottom: 16px;
-	box-shadow: 0 4px #999;
-	cursor: pointer;
-	display: inline;
-	white-space: nowrap;
+  border-radius: 8px;
+  text-align: left;
+  display: inline-block;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  box-shadow: 0 4px #999;
+  cursor: pointer;
+  display: inline;
+  white-space: nowrap;
 }
 Button:active {
-	box-shadow: 0 4px #666;
-	transform: translateY(3px);
+  box-shadow: 0 4px #666;
+  transform: translateY(3px);
 }
 
 .prices {
-	text-align: right;
+  text-align: right;
 }
-
 
 /*===========================================================
 Main Section
 ===========================================================*/
 .player-name {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .main-bttn-grid {
-	position: auto;
-	bottom: 4vh;
-	margin-right: auto;
-	display: grid;
-	grid-column-gap: 2vh;
-	grid-template-columns: auto auto;
-	text-align: center;
+  position: auto;
+  bottom: 4vh;
+  margin-right: auto;
+  display: grid;
+  grid-column-gap: 2vh;
+  grid-template-columns: auto auto;
+  text-align: center;
 }
 .left-bttn {
-	text-align: center;
+  text-align: center;
 }
 .right-bttn {
-	text-align: center;
+  text-align: center;
 }
 .save-bttn-grid {
-	position: auto;
-	bottom: 4vh;
-	margin-right: auto;
-	display: grid;
-	grid-column-gap: 1vh;
-	grid-template-columns: auto auto auto;
-	text-align: center;
+  position: auto;
+  bottom: 4vh;
+  margin-right: auto;
+  display: grid;
+  grid-column-gap: 1vh;
+  grid-template-columns: auto auto auto;
+  text-align: center;
 }
 /*===========================================================
 Upgrade Section
 ===========================================================*/
 .music-title {
-	position: -webkit-sticky; /* Safari */
-	position: sticky;
-	top: 0;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
 }
 .upgrade-grid {
-	display: grid;
-	grid-row-gap: 1vh;
-	grid-template-rows: auto;
+  display: grid;
+  grid-row-gap: 1vh;
+  grid-template-rows: auto;
 }

@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Music Artist Sim</title>
 	<link rel="stylesheet" type="text/css" href="main.css" />
-	<link rel = "icon" href = "img/icons8-micro.png" type = "image/x-icon">
+	<link rel="icon" href="img/icons8-micro.png" type="image/x-icon" />
 	<script type="text/javascript" src="main.js"></script>
 </head>
+
 <body class="main-grid">
 	<div class="grid-section">
-		<h1 type="button" onClick="nameChange()" id="nameText" class="player-name">Player Name</h1>
+		<h1 type="button" onClick="nameChange()" id="nameText" class="player-name">
+			Player Name
+		</h1>
 		<p>Physical Work Put in: <a id="effortTotal">0</a></p>
 		<p>Money Saved Up: $<a id="moneyTotal">0</a></p>
 		<p>Fanbase: <a id="fans">0</a></p>
@@ -16,11 +20,14 @@
 		<p>Written Songs Queue: <a id="qwritten">0</a></p>
 		<p>Recorded Songs Queue: <a id="qrecorded">0</a></p>
 		<div class="main-bttn-grid">
-			<button class="left-bttn" onClick="onEffortClicks()">Human Effort</button>
-			<button id="paybtn" class="right-bttn" onClick="onCollectPay()">Collect Paycheck</button>
+			<button class="left-bttn" onClick="onEffortClicks()">
+				Human Effort
+			</button>
+			<button id="paybtn" class="right-bttn" onClick="onCollectPay()">
+				Collect Paycheck
+			</button>
 		</div>
 	</div>
-
 
 	<div class="grid-section">
 		<h1>Stats</h1>
@@ -40,42 +47,79 @@
 			<button onclick="saveGame()">Save Game</button>
 			<button onclick="loadGame()">Load Game</button>
 			<button onclick="resetGame()">Reset Game</button>
-
 		</div>
 	</div>
-
 
 	<div class="music-grid">
 		<div class="grid-section" class="upgrades">
 			<h1 class="music-title">Store</h1>
 			<div class="upgrade-grid">
-				<button id="micBtn" onClick="buyMic()">Buy Mic $<a id="micPrice">0</a></button>
-				<button id="softBtn" onClick="buySoftware()">Buy Music Software $<a id="softwarePrice">0</a></button>
-				<button id="cloBtn" onClick="buyClothes()">Clothing $<a id="clothesPrice">0</a></button>
-				<button id="guiBtn" onClick="buyGuitar()">Guitar $<a id="guitarPrice">0</a></button>
-				<button id="camBtn" onClick="buyCamera()">Buy Camera $<a id="cameraPrice">0</a></button>
-				<button id="keyBtn" onClick="buyKeys()">Keyboard $<a id="keysPrice">0</a></button>
-				<button id="pcBtn" onClick="buyPC()">Laptop $<a id="pcPrice">0</a></button>
-				<button id="carBtn" onClick="buyCar()">Cool Car $<a id="carPrice">0</a></button>
-				<button id="midBtn" onClick="buyMidi()">MidiKeyboard $<a id="midiPrice">0</a></button>
-				<button id="tunBtn" onClick="buyAutotune()">Autotune $<a id="autotunePrice">0</a></button>
-				<button id="houBtn" onClick="buyHouse()">Big House $<a id="housePrice">0</a></button>
+				<button id="micBtn" onClick="buyMic()">
+					Buy Mic $<a id="micPrice">0</a>
+				</button>
+				<button id="softBtn" onClick="buySoftware()">
+					Buy Music Software $<a id="softwarePrice">0</a>
+				</button>
+				<button id="cloBtn" onClick="buyClothes()">
+					Clothing $<a id="clothesPrice">0</a>
+				</button>
+				<button id="guiBtn" onClick="buyGuitar()">
+					Guitar $<a id="guitarPrice">0</a>
+				</button>
+				<button id="camBtn" onClick="buyCamera()">
+					Buy Camera $<a id="cameraPrice">0</a>
+				</button>
+				<button id="keyBtn" onClick="buyKeys()">
+					Keyboard $<a id="keysPrice">0</a>
+				</button>
+				<button id="pcBtn" onClick="buyPC()">
+					Laptop $<a id="pcPrice">0</a>
+				</button>
+				<button id="carBtn" onClick="buyCar()">
+					Cool Car $<a id="carPrice">0</a>
+				</button>
+				<button id="midBtn" onClick="buyMidi()">
+					MidiKeyboard $<a id="midiPrice">0</a>
+				</button>
+				<button id="tunBtn" onClick="buyAutotune()">
+					Autotune $<a id="autotunePrice">0</a>
+				</button>
+				<button id="houBtn" onClick="buyHouse()">
+					Big House $<a id="housePrice">0</a>
+				</button>
 			</div>
 		</div>
 
 		<div class="grid-section">
 			<h1 class="music-title">Studio</h1>
 			<div class="upgrade-grid">
-				<button id="playbtn" onClick="onPlay()">Practice Singing <a id="play">0</a></button>
-				<button id="writebtn" onClick="onWrite()">Write Song <a id="write">0</a></button>
-				<button id="recordbtn" onClick="onRecord()">Record Song <a id="record">0</a></button>
-				<button id="uploadbtn" onClick="onUpload()">Upload Song <a id="upload">0</a></button>
-				<button id="socialbtn" onClick="onPromote()">Self Promote on Social Media <a id="social">0</a></button>
-				<button id="beatbtn" onClick="onProduce()">Make Beat <a id="beat">0</a></button>
-				<button id="videobtn" onClick="onVideo()">Make Music Video <a id="video">0</a></button>
-				<button id="showbtn" onClick="onTour()">Live Show <a id="show">0</a></button>
+				<button id="playbtn" onClick="onPlay()">
+					Practice Singing <a id="play">0</a>
+				</button>
+				<button id="writebtn" onClick="onWrite()">
+					Write Song <a id="write">0</a>
+				</button>
+				<button id="recordbtn" onClick="onRecord()">
+					Record Song <a id="record">0</a>
+				</button>
+				<button id="uploadbtn" onClick="onUpload()">
+					Upload Song <a id="upload">0</a>
+				</button>
+				<button id="socialbtn" onClick="onPromote()">
+					Self Promote on Social Media <a id="social">0</a>
+				</button>
+				<button id="beatbtn" onClick="onProduce()">
+					Make Beat <a id="beat">0</a>
+				</button>
+				<button id="videobtn" onClick="onVideo()">
+					Make Music Video <a id="video">0</a>
+				</button>
+				<button id="showbtn" onClick="onTour()">
+					Live Show <a id="show">0</a>
+				</button>
 			</div>
 		</div>
 	</div>
 </body>
+
 </html>
