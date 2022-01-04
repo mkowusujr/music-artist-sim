@@ -1,6 +1,7 @@
 /*=============================================================================
 Main Buttons
 =============================================================================*/
+var nameSave = "Player Name";
 var effort = 0, money = 0, fanCount = 0;
 var totalEffort = 0, totalMoney = 0, totalFanCount = 0;
 var effortRate = 1;
@@ -20,8 +21,8 @@ function onCollectPay(){
 }
 
 function nameChange(){
-let name = prompt("Enter Your Stage Name", "Name");
-document.getElementById('nameText').innerHTML = name;
+	let name = prompt("Enter Your Stage Name", "New Name");
+	nameSave = name;
 }
 
 
@@ -199,33 +200,101 @@ function onTour(){
 /*=============================================================================
 Game Data
 =============================================================================*/
-/*function saveGame(){
+function saveGame(){
 	var saveData = {
+		nameSave: nameSave,
 		effort: effort,
 		totalEffort: totalEffort,
 		effortRate: effortRate,
 		money: money,
+		totalMoney: totalMoney,
 		fanCount: fanCount,
 		totalFanCount: totalFanCount,
+		qwritten: qwritten,
+		qrecorded: qrecorded,
+		fanRate: fanRate,
+		updateFanRate: updateFanRate,
 
+		songsWritten: songsWritten,
+		songsRecorded: songsRecorded,
+		songsUploaded: songsUploaded,
 
-		var effort = 0, money = 0, fanCount = 0;
-		var totalEffort = 0, totalMoney = 0, totalFanCount = 0;
-		var effortRate = 1;
+		micPrice: micPrice,
+		softwarePrice: softwarePrice,
+		clothesPrice: clothesPrice,
+		guitarPrice: guitarPrice,
+		cameraPrice: cameraPrice,
+		keysPrice: keysPrice,
+		pcPrice: pcPrice,
+		carPrice: carPrice,
+		midiPrice: midiPrice,
+		autotunePrice: autotunePrice,
+		housePrice: housePrice,
 
-		var fanRate = 0;
-		var beatRate = 3;
-		var micPrice = 20;
-		var songsWritten = 0, songsRecorded = 0, songsUploaded = 0;
-		var qwritten = 0, qrecorded = 0;
-		var updateFanRate = 0;
-		var play = 60, write = 120, record = 240, upload = 360;
-		var beat = 600, video = 720, social = 480, show = 840;
+		play: play,
+		write: write,
+		record: record,
+		upload: upload,
+		social: social,
+		beat: beat,
+		video: video,
+		show:show
 	};
-}*/
+	localStorage.setItem("saveData", JSON.stringify(saveData));
+}
 
+function loadGame(){
+	var saveData = JSON.parse(localStorage.getItem("saveData"));
+	if (typeof saveData.nameSave !== "undefined") nameSave = saveData.nameSave;
+	if (typeof saveData.effort !== "undefined") effort = saveData.effort;
+	if (typeof saveData.totalEffort !== "undefined") totalEffort = saveData.totalEffort;
+	if (typeof saveData.effortRate !== "undefined") effortRate = saveData.effortRate;
+	if (typeof saveData.money !== "undefined") money = saveData.money;
+	if (typeof saveData.totalMoney !== "undefined") totalMoney = saveData.totalMoney;
+	if (typeof saveData.fanCount !== "undefined") fanCount = saveData.fanCount;
+	if (typeof saveData.totalFanCount !== "undefined") totalFanCount = saveData.totalFanCount;
+	if (typeof saveData.qwritten !== "undefined") qwritten = saveData.qwritten;
+	if (typeof saveData.qrecorded !== "undefined")qrecorded = saveData.qrecorded;
+	if (typeof saveData.fanRate !== "undefined") fanRate = saveData.fanRate;
+	if (typeof saveData.updateFanRate !== "undefined") updateFanRate = saveData.updateFanRate;
 
+	if (typeof saveData.songsWritten !== "undefined") songsWritten = saveData.songsWritten;
+	if (typeof saveData.songsRecorded !== "undefined") songsRecorded = saveData.songsRecorded;
+	if (typeof saveData.songsUploaded !== "undefined") songsUploaded = saveData.songsUploaded;
 
+	if (typeof saveData.micPrice !== "undefined") micPrice = saveData.micPrice;
+	if (typeof saveData.softwarePrice !== "undefined") softwarePrice = saveData.softwarePrice;
+	if (typeof saveData.clothesPrice !== "undefined") clothesPrice = saveData.clothesPrice;
+	if (typeof saveData.guitarPrice !== "undefined") guitarPrice = saveData.guitarPrice;
+	if (typeof saveData.cameraPrice !== "undefined") cameraPrice = saveData.cameraPrice;
+	if (typeof saveData.keysPrice !== "undefined") keysPrice = saveData.keysPrice;
+	if (typeof saveData.pcPrice !== "undefined") pcPrice = saveData.pcPrice;
+	if (typeof saveData.carPrice !== "undefined") carPrice = saveData.carPrice;
+	if (typeof saveData.midiPrice !== "undefined") midiPrice = saveData.midiPrice;
+	if (typeof saveData.autotunePrice !== "undefined") autotunePrice = saveData.autotunePrice;
+	if (typeof saveData.housePrice !== "undefined") housePrice = saveData.housePrice;
+
+	if (typeof saveData.play !== "undefined") play = saveData.play;
+	if (typeof saveData.write !== "undefined") write = saveData.write;
+	if (typeof saveData.record !== "undefined") record = saveData.record;
+	if (typeof saveData.upload !== "undefined") upload = saveData.upload;
+	if (typeof saveData.social !== "undefined") social = saveData.social;
+	if (typeof saveData.beat !== "undefined") beat = saveData.beat;
+	if (typeof saveData.video !== "undefined") video = saveData.video;
+	if (typeof saveData.show !== "undefined") show = saveData.show;
+}
+
+function resetGame(){
+	if (confirm("Are you sure you want to reset your game?")){
+		var saveData = {};
+		localStorage.setItem("saveData", JSON.stringify(saveData));
+		location.reload();
+	}
+}
+
+window.onload = function(){
+	loadGame();
+}
 /*=============================================================================
 Main Loop
 =============================================================================*/
@@ -247,6 +316,7 @@ window.setInterval(function(){
 
 window.setInterval(function(){
 	document.title = `$${totalMoney} Net Worth - Music Artist Sim`;
+	document.getElementById('nameText').innerHTML = nameSave;
 	document.getElementById('effortTotal').innerHTML = effort;
     document.getElementById('effortStat').innerHTML = totalEffort;
     document.getElementById('moneyTotal').innerHTML = money;
@@ -486,3 +556,7 @@ window.setInterval(function(){
 		document.getElementById('showbtn').removeAttribute('disabled');
 	}
 }, 1);
+
+window.setInterval(function(){
+	saveGame();
+}, 10000);
